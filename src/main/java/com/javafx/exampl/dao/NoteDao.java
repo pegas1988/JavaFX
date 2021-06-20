@@ -44,15 +44,15 @@ public class NoteDao {
     public ArrayList<Note> getAllNotes() throws DaoException {
         ArrayList<Note> array = new ArrayList<>();
         try (Connection connection = getConnection();
-             Statement statement =connection.createStatement();
-             ResultSet resultSet =statement.executeQuery(FIND_ALL);
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(FIND_ALL);
         ) {
-            while (resultSet.next()){
-            Note note = new Note();
-            note.setCreatedTime(resultSet.getTimestamp("created_time").toLocalDateTime());
-            note.setDescription(resultSet.getString("description"));
-            note.setId(resultSet.getInt("id"));
-            array.add(note);
+            while (resultSet.next()) {
+                Note note = new Note();
+                note.setCreatedTime(resultSet.getTimestamp("created_time").toLocalDateTime());
+                note.setDescription(resultSet.getString("description"));
+                note.setId(resultSet.getInt("id"));
+                array.add(note);
             }
         } catch (SQLException | ClassNotFoundException w) {
             throw new DaoException("Failed to delete");
