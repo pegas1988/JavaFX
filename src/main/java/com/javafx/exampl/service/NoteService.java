@@ -13,10 +13,11 @@ public class NoteService {
     public Note create(Note note) throws ServiceException {
         try {
             return noteDao.create(note);
-        } catch (DaoException e) {
-            throw new ServiceException("failed to save");
+        } catch (Exception e) {
+            throw new ServiceException(e.toString());
         }
     }
+
     public void delete(Note note) {
         try {
             noteDao.delete(note);
@@ -24,9 +25,9 @@ public class NoteService {
             e.printStackTrace();
         }
     }
+
     public ArrayList<Note> findAllNotes() throws DaoException {
-        ArrayList<Note> arrayList;
-        return  arrayList = noteDao.getAllNotes();
+        return noteDao.getAllNotes();
     }
 
 }

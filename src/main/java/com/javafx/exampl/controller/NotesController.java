@@ -25,8 +25,8 @@ public class NotesController implements Initializable {
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            for (int e = 0; e < noteService.findAllNotes().size(); e++)
-                noteList.getItems().add(noteService.findAllNotes().get(e));
+            for (int i = 0; i < noteService.findAllNotes().size(); i++)
+                noteList.getItems().addAll(noteService.findAllNotes().get(i));
         } catch (DaoException e) {
             e.printStackTrace();
         }
